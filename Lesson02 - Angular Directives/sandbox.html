@@ -37,10 +37,15 @@
       </div>
 
 
+      <div ng-if="ctrl.isClassChecked">
+        <div ng-bind="ctrl.username.firstName"></div>
+      </div>
+
+
       <h3>Ng-Model</h3>
       <div>
         <input type="text" ng-model="ctrl.username.firstName">
-        <div ng-bind="ctrl.username.firstName"></div>
+        <div ng-bind="::ctrl.username.firstName"></div>
         <button ng-click="ctrl.displayUsername()">Display</button>
       </div>
 

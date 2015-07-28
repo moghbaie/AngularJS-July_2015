@@ -21,7 +21,11 @@ myApp.controller('MyController', function() {
     }
   };
 
-  self.displayUsername = function() { 
-    alert(self.username.firstName);
-  }
+  self.username= {
+    firstName: "George"
+  };
+
+  // self.displayUsername = function() { 
+  //   alert(self.username.firstName);
+  // }
 });
