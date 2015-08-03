@@ -14,7 +14,17 @@ myApp.value('MY_FOLDERS', {
 
 myApp.value('SECRET_API_KEY', '123489234');
 
-myApp.factory('CarDTO', function() {
+myApp.service('AgeCalculateService', function() {
+	var self = this;
+
+	self.calculateAge = function(year) {
+		var age = 2015 - year;
+		return age;
+	};
+
+});
+
+myApp.factory('CarDTO', function(AgeCalculateService) {
 
 	function CarDTO(make, model) {
 		this.make = make;
@@ -23,12 +33,11 @@ myApp.factory('CarDTO', function() {
 
 	CarDTO.prototype.setYear = function(year) {
 		this.year = year;
-		var age = 2015 - year;
-		if (year > 999) {
-			this.age = 2015 - year;
-		} else {
-			this.age = undefined;
-		}
+		this.age = AgeCalculateService.calculateAge(year);
+	};
+
+	CarDTO.buildFromPrexisting = function(preexistingCar) {
+		return new CarDTO(preexistingCar.make preexistingCar.model);
 	};
 
 	return CarDTO;
