@@ -21,7 +21,6 @@ myApp.service('AgeCalculateService', function() {
 		var age = 2015 - year;
 		return age;
 	};
-
 });
 
 myApp.factory('CarDTO', function(AgeCalculateService) {
