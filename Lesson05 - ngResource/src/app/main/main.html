@@ -1,0 +1,23 @@
+<div class="container">
+
+  <h1 ng-bind="ctrl.name"></h1>
+
+
+
+  <button class="btn btn-primary" ng-click="ctrl.getUsers()">Get Info</button>
+
+  <h3>Users</h3>
+  <div ng-repeat="user in ctrl.users">
+
+  	<div ng-bind="user.name"></div>
+  	<div ng-bind="user.gender"></div>
+  	<button ng-click="ctrl.getFriendsForUser(user)">Get Friends</button>
+
+  	<div ng-if="user.friends">
+		<h3>User Friends</h3>
+		<div ng-repeat="friend in user.friends"> 
+			<div ng-bind="friend.name"></div>
+		</div>
+  	</div>
+  </div>
+</div>
