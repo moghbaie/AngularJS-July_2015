@@ -3,6 +3,16 @@
   <h1 ng-bind="ctrl.name"></h1>
 
 
+  <input type="text" ng-model="ctrl.address" ng-change="ctrl.updateAddress(ctrl.address)">
+
+  <h3>Addresses</h3>
+  <div style="height: 500px; overflow:auto;">
+    <div ng-repeat="address in ctrl.addresses">
+      <div ng-bind="address.address"></div>
+      <div ng-bind="address.long"></div>
+      <div ng-bind="address.lat"></div>
+    </div>
+  </div>
 
   <button class="btn btn-primary" ng-click="ctrl.getUsers()">Get Info</button>
 

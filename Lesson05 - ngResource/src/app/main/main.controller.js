@@ -2,9 +2,33 @@
   'use strict';
 
   angular.module('template')
-  
-  .controller('MainController', function (UserResource, FriendsResource) {
+
+  .service('MainControllerService', function(GoogleREST) {
     var self = this;
+
+    self.getAddressesForCtrl = function(address, callback) {
+        GoogleREST.getAddresses(address, function(response) {
+            var formattedAddresses = [];
+            for (var i = 0; i < response.results.length; i++) {
+                formattedAddress.push({
+                    address: response.results[i].formatted_address,
+                    long: response.results[i].geometry.location.lng,
+                    lat: response.results[i].geometry.location.lat
+                });
+            };
+            callback(formattedAddresses);
+        })
+    };
+  })
+  
+  .controller('MainController', function (UserResource, MainControllerService, FriendsResource) {
+    var self = this;
+
+    self.updateAddress = function(address) {
+        MainControllerService.getAddressesForCtrl(self.address, function(addresses) {
+            self.addresses = addresses;
+        });
+    };
 
     var resourceObject = UserResource;
 
