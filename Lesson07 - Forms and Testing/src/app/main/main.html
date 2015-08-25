@@ -1,0 +1,44 @@
+<div class="container">
+	<form name="ctrl.myForm" ng-submit="ctrl.onSubmit()" novalidate>
+
+		<input  type="text" 
+				ng-model="ctrl.name" 
+				placeholder="Name" 
+				required>
+		
+		<input  type="number" 
+				ng-model="ctrl.age" 
+				placeholder="Age">
+
+		<input  type="email" 
+				ng-model="ctrl.email" 
+				placeholder="Email"
+				name="userEmail"
+				required>
+
+		<input  type="phone" 
+				ng-model="ctrl.phone" 
+				placeholder="Phone"
+				name="userPhone"
+				ng-pattern="/^\(\d\d\d\) \d\d\d-\d\d\d\d$/">
+
+		<select ng-model="ctrl.state"
+				ng-options="option.abbr as option.name for option in ctrl.stateOptions">
+
+		</select>
+
+		<input type="submit" class="btn btn-primary" value="Submit">		
+
+	</form>
+</div>
+
+<div>
+	State
+	<pre>
+		{{ctrl.state | json}}
+	</pre>
+
+	<pre>
+		{{ctrl.myForm | json}}
+	</pre>
+</div>
